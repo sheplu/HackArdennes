@@ -6,7 +6,12 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var twig = require('twig');
 var mongoose = require('mongoose');
+var https = require('https');
+var http = require('http');
+var fs = require('fs');
 
+var privateKey = fs.readFileSync( 'privatekey.pem' );
+var certificate = fs.readFileSync( 'certificate.pem' );
 
 mongoose.connect('mongodb://localhost:27017/HackArdennes');
 var db = mongoose.connection;
@@ -56,5 +61,8 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error.twig');
 });
+
+http.createServer(app).listen(80);
+https.createServer({key: privateKey, cert: certificate}, app).listen(443);
 
 module.exports = app;
