@@ -2,6 +2,10 @@
 
 {% block content %}
   Message of the moments: <b> {{ message }} </b>
+  <div>
+    <canvas id="mapCanvas" width="1000" height="500" style="border:1px solid #d3d3d3;" />
+  </div>
+  <div>
   <table class="table">
     <thead>
       <tr>
@@ -22,8 +26,8 @@
     {% endfor %}
   </tbody>
 </table>
+</div>
 
-<canvas id="mapCanvas" width="1000" height="500" style="border:1px solid #d3d3d3;">
 <script>
 
 var mapCanvas;
