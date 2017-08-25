@@ -7,7 +7,7 @@ var bodyParser = require('body-parser');
 var twig = require('twig');
 var mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost:27017/NodeAPI');
+mongoose.connect('mongodb://localhost:27017/HackArdennes');
 var db = mongoose.connection;
 db.once('open', function() {
 	console.log('OPEN');

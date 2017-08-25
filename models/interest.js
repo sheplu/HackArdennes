@@ -5,12 +5,21 @@ var Schema = mongoose.Schema;
 var Interest = new Schema({
 	interestId: Number,
 	title : String,
-	state : String,
+	state : {
+		type : String,
+		enum : [ 'GREEN', 'ORANGE', 'RED'],
+		default : 'GREEN'
+	},
 	coords : {
 		x : Number,
 		y : Number
 	},
-	type : String
+	type : {
+		type : String,
+		enum : [ 'BOISSON', 'NOURRITURE'],
+		default : 'BOISSON'
+	},
+	pushstate: []
 });
 
 module.exports = mongoose.model('Interest', Interest);
