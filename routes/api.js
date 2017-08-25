@@ -48,7 +48,8 @@ router.put('/interest', function(req, res, next) {
 	}, {
 		state : req.body.state
 	}, {
-		new : true
+		new : true,
+    runValidators : true
 	}, function (err, data) {
 		if(err) {
 			res.json(err);
