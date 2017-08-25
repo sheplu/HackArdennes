@@ -1,5 +1,26 @@
 {% extends "template.twig" %}
 
 {% block content %}
-Message of the moment: <b>{{ message }}</b>
+  Message of the moments: <b> {{ message }} </b>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Title</th>
+        <th>Type</th>
+      </tr>
+    </thead>
+    <tbody>
+
+
+    {% for data in data %}
+      <tr class={{ data.state }}>
+        <th scope="row"> {{ loop.index }} </th>
+        <td> {{ data.title }} </td>
+        <td> {{ data.type }} </td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
 {% endblock %}

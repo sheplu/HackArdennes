@@ -6,3 +6,15 @@ body {
 a {
   color: #00B7FF;
 }
+
+.GREEN {
+  background-color: green;
+}
+
+.ORANGE {
+  background-color: orange;
+}
+
+.RED {
+  background-color: red;
+}

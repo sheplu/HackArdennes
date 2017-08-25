@@ -17,8 +17,7 @@ router.get('/interest', function(req, res, next) {
 		} else {
 			res.json(data);
 		}
-
-	})
+	});
 });
 
 router.post('/interest', function(req, res, next) {

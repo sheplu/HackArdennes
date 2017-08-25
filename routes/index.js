@@ -4,9 +4,17 @@ var Interest = require('../models/interest');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index.twig', {
-    message: "hello world"
-  });
+  Interest.find({}, function(err, data){
+		if(err) {
+			res.render('index.twig')
+		} else {
+      res.render('index.twig', {
+        message: "hello world",
+				data : data
+      });
+		}
+	})
+
 });
 
 module.exports = router;
