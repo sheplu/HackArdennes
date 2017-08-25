@@ -10,7 +10,7 @@ router.get('/', function(req, res, next) {
 		} else {
       res.render('index.twig', {
         message: "hello world",
-				data : data
+				datas : data
       });
 		}
 	})
