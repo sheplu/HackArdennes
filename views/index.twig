@@ -23,4 +23,59 @@
   </tbody>
 </table>
 
+<canvas id="mapCanvas" width="500" height="500" style="border:1px solid #d3d3d3;">
+<img id="map" width="500" height="500" src="images/tilesets/map.png" >
+<script>
+
+var mapCanvas;
+window.onload = function() {
+    var mapCanvas = document.getElementById("mapCanvas");
+    var ctx = mapCanvas.getContext("2d");
+    var image = document.getElementById("map");
+    ctx.drawImage(image, 0, 0);
+
+
+    ctx.drawImage(imageBouton, 200, 200);
+
+    window.addEventListener("click", fonctionAppeleeSurLeClic);
+}
+
+
+
+      var imageBouton = new Image();
+      //imageBouton.addEventListener('load', myFunction, false);
+      imageBouton.src = "images/tilesets/type_1.png";
+
+
+
+      var fonctionAppeleeSurLeClic = function(e) {
+  var positions = getMousePosition(e,mapCanvas);
+
+  if ( positions[ 0 ] > 200 && positions[ 0 ] < 200 + 32
+    && positions[ 1 ] > 200 && positions[ 1 ] < 200 + 32 ) {
+    alert("clic sur le bouton");
+  }
+}
+
+var getOffsetPosition = function(obj){
+    var offsetX = offsetY = 0;
+
+    if (obj.offsetParent) {
+        do {
+            offsetX += obj.offsetLeft;
+            offsetY += obj.offsetTop;
+        } while(obj = obj.offsetParent);
+    }
+    return [offsetX,offsetY];
+}
+
+var getMousePosition = function(e,canvasElement){
+    OFFSET = getOffsetPosition(canvasElement);
+
+    mouse_x = (e.pageX || (e.clientX + document.body.scrollLeft +  document.documentElement.scrollLeft)) - OFFSET[0];
+    mouse_y = (e.pageY || (e.clientY + document.body.scrollTop + document.documentElement.scrollTop)) - OFFSET[1];
+
+    return [mouse_x,mouse_y];
+}
+</script>
 {% endblock %}
