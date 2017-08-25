@@ -23,22 +23,22 @@
   </tbody>
 </table>
 
-<canvas id="mapCanvas" width="1000" height="500" style="border:1px solid #d3d3d3;">
-<img id="map" width="500" height="500" src="images/tilesets/map.png" >
+<canvas id="mapCanvas" width="500" height="500" style="border:1px solid #d3d3d3;">
 <script>
 
 var mapCanvas;
 window.onload = function() {
     var mapCanvas = document.getElementById("mapCanvas");
     var ctx = mapCanvas.getContext("2d");
-    var image = document.getElementById("map");
+
     ctx.drawImage(image, 0, 0);
 
 
     ctx.drawImage(imageBouton, 200, 200);
 }
 
-
+  var image = new Image();
+image.src = "images/tilesets/map.png";
 
       var imageBouton = new Image();
       //imageBouton.addEventListener('load', myFunction, false);
