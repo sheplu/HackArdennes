@@ -17,7 +17,7 @@
     <tbody>
 
 
-    {% for data in data %}
+    {% for data in datas %}
       <tr class={{ data.state }}>
         <th scope="row"> {{ loop.index }} </th>
         <td> {{ data.title }} </td>
@@ -30,87 +30,62 @@
 
 <script>
 
-var mapCanvas;
+  var mapCanvas;
+  var datas = {{ datas | json_encode() }};
+  console.log(datas)
 
-var datas = {{ datas | json_encode() }};
+  var image = new Image();
+  image.src = "images/tilesets/map.png";
 
-window.onload = function() {
+  var type_1 = new Image();
+  type_1.src = "images/tilesets/type_1.png";
+
+  var type_2 = new Image();
+  type_2.src = "images/tilesets/type_2.png";
+
+  var type_3 = new Image();
+  type_3.src = "images/tilesets/type_3.png";
+
+  window.onload = function() {
     var mapCanvas = document.getElementById("mapCanvas");
     var ctx = mapCanvas.getContext("2d");
 
     ctx.drawImage(image, 0, 0);
+    {% for data in datas %}
+      var type_image;
+      var state = "{{ data.state }}"
+      switch(state) {
+        case "ORANGE":
+          type_image = type_2
+          break;
+        case "RED":
+          type_image = type_3
+          break;
+        default:
+          type_image = type_1
+      }
+
+      ctx.drawImage(type_image, {{data.coords.x}}, {{data.coords.y}});
+    {% endfor %}
 
     mapCanvas.addEventListener('click', function (e) {
       var posX = e.clientX - mapCanvas.offsetLeft + document.body.scrollLeft + document.documentElement.scrollLeft;
       var posY = e.clientY - mapCanvas.offsetTop + document.body.scrollTop + document.documentElement.scrollTop;
 
       var selectedInterest;
-
-      {% for data in datas %}
-      var type_image;
-      var state = "{{ data.state }}"
-      switch(state) {
-      case "ORANGE":
-          type_image = type_2
-          break;
-      case "RED":
-          type_image = type_3
-          break;
-      default:
-          type_image = type_1
+      var test = datas;
+      for(var i = 0; i<datas.length; i++) {
+        console.log(datas[i]._doc.title)
       }
-      ctx.drawImage(type_image, {{data.coords.x}}, {{data.coords.y}});
-      {% endfor %}
-
-      for (let interest in datas) {
-      console.log(interest.coords)
-        if((posX >= interest.coords.x || posX <= interest.coords.x) && (posY >= interest.coords.y || posY <= interest.coords.y))
-        {
-            selectedInterest = interest;
+      /*
+      for (var interest in datas[0]._doc) {
+        if((posX >= interest.coords.x || posX <= interest.coords.x) && (posY >= interest.coords.y || posY <= interest.coords.y)) {
+          selectedInterest = interest;
         }
+
       }
-
-      alert(selectedInterest.title);
-    })
-
-    {% for data in datas %}
-    var type_image;
-    var state = "{{ data.state }}"
-    switch(state) {
-    case "ORANGE":
-        type_image = type_2
-        break;
-    case "RED":
-        type_image = type_3
-        break;
-    default:
-        type_image = type_1
-    }
-    ctx.drawImage(type_image, {{data.coords.x}}, {{data.coords.y}});
-    {% endfor %}
-
-<<<<<<< HEAD
-=======
-  if ( positions[ 0 ] > 200 && positions[ 0 ] < 200 + 32
-    && positions[ 1 ] > 200 && positions[ 1 ] < 200 + 32 ) {
-    alert("clic sur le bouton");
+      alert(selectedInterest.title);*/
+      })
   }
-
-
->>>>>>> a4615cfe4d5f86be87ecc91b22e8de368124fecf
-}
-
-  var image = new Image();
-  image.src = "images/tilesets/map.png";
-
-    var type_1 = new Image();
-    type_1.src = "images/tilesets/type_1.png";
-
-    var type_2 = new Image();
-    type_2.src = "images/tilesets/type_2.png";
-
-    var type_3 = new Image();
-    type_3.src = "images/tilesets/type_3.png";
-
 </script>
 {% endblock %}
