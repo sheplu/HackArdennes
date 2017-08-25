@@ -1,0 +1,77 @@
+{% extends "template.twig" %}
+
+{% block content %}
+  Message of the moments: <b> {{ message }} </b>
+  <div>
+    <canvas id="mapCanvas" width="944" height="537" style="border:1px solid #d3d3d3;" />
+  </div>
+  <div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Title</th>
+        <th>Type</th>
+        <th>Change</th>
+        <th>Change</th>
+      </tr>
+    </thead>
+    <tbody>
+
+
+    {% for data in data %}
+      <tr class={{ data.state }}>
+        <th scope="row"> {{ loop.index }} </th>
+        <td> {{ data.title }} </td>
+        <td> {{ data.type }} </td>
+        {% for d in enu %}
+          {% if d != data.state %}
+            <td class="click"> {{ d | lower }} <img src="images/{{ d | lower }}.png" alt="{{ d }}"/></td>
+          {% endif %}
+        {% endfor %}
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+</div>
+
+<script>
+
+var mapCanvas;
+window.onload = function() {
+    var mapCanvas = document.getElementById("mapCanvas");
+    var ctx = mapCanvas.getContext("2d");
+
+    ctx.drawImage(image, 0, 0);
+
+    mapCanvas.addEventListener('click', function (e) {
+      var posX = e.clientX - mapCanvas.offsetLeft + document.body.scrollLeft + document.documentElement.scrollLeft;
+      var posY = e.clientY - mapCanvas.offsetTop + document.body.scrollTop + document.documentElement.scrollTop;
+      console.log(posX + ' - ' + posY);
+    })
+    ctx.drawImage(imageBouton, 200, 200);
+}
+
+  var image = new Image();
+  image.src = "images/tilesets/map.png";
+
+  var imageBouton = new Image();
+  imageBouton.src = "images/tilesets/type_1.png";
+
+  var fonctionAppeleeSurLeClic = function(e) {
+    var positions = getMousePosition(e,mapCanvas);
+
+    if ( positions[ 0 ] > 200 && positions[ 0 ] < 200 + 32
+    && positions[ 1 ] > 200 && positions[ 1 ] < 200 + 32 ) {
+      alert("clic sur le bouton");
+    }
+  }
+
+  var clicks = document.querySelectorAll('.click');
+  for (var i = 0; i< clicks.length; i++) {
+    clicks[i].addEventListener('click', function() {
+      console.log(this.childNodes[1].getAttribute('alt'))
+    })
+  }
+</script>
+{% endblock %}

@@ -6,14 +6,16 @@ var Interest = require('../models/interest');
 router.get('/', function(req, res, next) {
   Interest.find({}, function(err, data){
 		if(err) {
-			res.render('index.twig')
+			res.render('error.twig')
 		} else {
-      res.render('index.twig', {
+      res.render('volunteer.twig', {
         message: "hello world",
-				datas : data
+				data : data,
+        enu: [ 'GREEN', 'ORANGE', 'RED']
       });
 		}
 	})
 });
+
 
 module.exports = router;
