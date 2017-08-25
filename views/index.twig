@@ -23,7 +23,7 @@
   </tbody>
 </table>
 
-<canvas id="mapCanvas" width="500" height="500" style="border:1px solid #d3d3d3;">
+<canvas id="mapCanvas" width="1000" height="500" style="border:1px solid #d3d3d3;">
 <img id="map" width="500" height="500" src="images/tilesets/map.png" >
 <script>
 
@@ -36,8 +36,6 @@ window.onload = function() {
 
 
     ctx.drawImage(imageBouton, 200, 200);
-
-    window.addEventListener("click", fonctionAppeleeSurLeClic);
 }
 
 
@@ -57,25 +55,6 @@ window.onload = function() {
   }
 }
 
-var getOffsetPosition = function(obj){
-    var offsetX = offsetY = 0;
 
-    if (obj.offsetParent) {
-        do {
-            offsetX += obj.offsetLeft;
-            offsetY += obj.offsetTop;
-        } while(obj = obj.offsetParent);
-    }
-    return [offsetX,offsetY];
-}
-
-var getMousePosition = function(e,canvasElement){
-    OFFSET = getOffsetPosition(canvasElement);
-
-    mouse_x = (e.pageX || (e.clientX + document.body.scrollLeft +  document.documentElement.scrollLeft)) - OFFSET[0];
-    mouse_y = (e.pageY || (e.clientY + document.body.scrollTop + document.documentElement.scrollTop)) - OFFSET[1];
-
-    return [mouse_x,mouse_y];
-}
 </script>
 {% endblock %}

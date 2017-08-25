@@ -10,8 +10,8 @@ var https = require('https');
 var http = require('http');
 var fs = require('fs');
 
-var privateKey = fs.readFileSync( 'privatekey.pem' );
-var certificate = fs.readFileSync( 'certificate.pem' );
+//var privateKey = fs.readFileSync( 'privatekey.pem' );
+//var certificate = fs.readFileSync( 'certificate.pem' );
 
 mongoose.connect('mongodb://localhost:27017/HackArdennes');
 var db = mongoose.connection;
@@ -62,7 +62,7 @@ app.use(function(err, req, res, next) {
   res.render('error.twig');
 });
 
-http.createServer(app).listen(80);
-https.createServer({key: privateKey, cert: certificate}, app).listen(443);
+//http.createServer(app).listen(80);
+//https.createServer({key: privateKey, cert: certificate}, app).listen(443);
 
 module.exports = app;
