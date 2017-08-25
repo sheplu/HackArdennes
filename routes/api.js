@@ -23,6 +23,7 @@ router.get('/interest', function(req, res, next) {
 
 router.post('/interest', function(req, res, next) {
 	var interest = new Interest({
+    interestId : req.body.interestId,
 		title : req.body.title,
 		state : req.body.state,
 		coords : {
@@ -43,7 +44,7 @@ router.post('/interest', function(req, res, next) {
 router.put('/interest', function(req, res, next) {
 	console.log(req.body.state);
 	Interest.findOneAndUpdate({
-		title: req.body.title
+		interestId: req.body.interestId
 	}, {
 		state : req.body.state
 	}, {

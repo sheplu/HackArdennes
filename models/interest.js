@@ -3,6 +3,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var Interest = new Schema({
+	interestId: Number,
 	title : String,
 	state : String,
 	coords : {
