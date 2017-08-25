@@ -6,7 +6,6 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var twig = require('twig');
 var mongoose = require('mongoose');
-var subdomain = require('express-subdomain');
 
 
 mongoose.connect('mongodb://localhost:27017/HackArdennes');
@@ -22,7 +21,6 @@ var api = require('./routes/api');
 
 var app = express();
 
-app.use(subdomain('team04', index));
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 
