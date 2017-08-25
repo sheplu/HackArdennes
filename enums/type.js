@@ -1,5 +1,5 @@
 module.exports = {
   type : String,
-  enum : [ 'BOISSON', 'NOURRITURE'],
+  enum : [ 'BOISSON', 'NOURRITURE', 'TOILETTES'],
   default : 'BOISSON'
 };
