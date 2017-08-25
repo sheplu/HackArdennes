@@ -57,4 +57,48 @@ router.put('/interest', function(req, res, next) {
 		}
 	})
 });
+
+
+router.get('/volonteer', function(req, res, next) {
+	Interest.find({}, function(err, data){
+		if(err) {
+			res.json(err);
+		} else {
+			res.json(data);
+		}
+
+	})
+});
+
+router.post('/volonteer', function(req, res, next) {
+	var volonteer = new Volonteer({
+    volonteerId : req.body.volonteerId,
+    personnalInformations : req.body.personnalInformations
+  });
+	volonteer.save(function(err, data) {
+		if (err) {
+			res.json(err);
+		} else {
+			res.json(data);
+		}
+	});
+});
+
+router.put('/volonteer', function(req, res, next) {
+	console.log(req.body.state);
+  Volonteer.findOneAndUpdate({
+		volonteerId: req.body.volonteerId
+	}, {
+		//state : req.body.state
+	}, {
+		new : true
+	}, function (err, data) {
+		if(err) {
+			res.json(err);
+		} else {
+			res.json(data);
+		}
+	})
+});
+
 module.exports = router;
