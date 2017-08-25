@@ -23,7 +23,7 @@
   </tbody>
 </table>
 
-<canvas id="mapCanvas" width="500" height="500" style="border:1px solid #d3d3d3;">
+<canvas id="mapCanvas" width="1000" height="500" style="border:1px solid #d3d3d3;">
 <script>
 
 var mapCanvas;
@@ -33,16 +33,20 @@ window.onload = function() {
 
     ctx.drawImage(image, 0, 0);
 
-
+    mapCanvas.addEventListener('click', function (e) {
+      var posX = e.clientX - mapCanvas.offsetLeft + document.body.scrollLeft + document.documentElement.scrollLeft;
+      var posY = e.clientY - mapCanvas.offsetTop + document.body.scrollTop + document.documentElement.scrollTop;
+      console.log(posX + ' - ' + posY);
+    })
     ctx.drawImage(imageBouton, 200, 200);
 }
 
   var image = new Image();
 image.src = "images/tilesets/map.png";
 
-      var imageBouton = new Image();
-      //imageBouton.addEventListener('load', myFunction, false);
-      imageBouton.src = "images/tilesets/type_1.png";
+    var imageBouton = new Image();
+    //imageBouton.addEventListener('load', myFunction, false);
+    imageBouton.src = "images/tilesets/type_1.png";
 
 
 
