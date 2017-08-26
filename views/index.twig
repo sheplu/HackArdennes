@@ -47,7 +47,7 @@
 {% include 'partialSVG.xml' %}
 
 {% for data in datas %}
-/*
+
   var type_image;
   var state = "{{ data.state }}"
   switch(state) {
@@ -59,7 +59,9 @@
       break;
     default:
       type_image = type_1
-  }*/
+  }
+
+
 
   <g><circle cx="{{data.coords.x}}" cy="{{data.coords.y}}" r="12"
       style="stroke:#006600;
