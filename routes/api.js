@@ -42,7 +42,6 @@ router.post('/interest', function(req, res, next) {
 });
 
 router.put('/interest', function(req, res, next) {
-  console.log(req.body)
 	Interest.findOneAndUpdate({
 		interestId: req.body.interestId
 	}, {
