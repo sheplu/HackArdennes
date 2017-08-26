@@ -25,6 +25,7 @@ router.post('/interest', function(req, res, next) {
     interestId : req.body.interestId,
 		title : req.body.title,
 		state : req.body.state,
+		desc : req.body.desc,
 		coords : {
 			x : req.body.x,
 			y : req.body.y

@@ -6,7 +6,11 @@ var type = require('./../enums/type');
 var state = require('./../enums/state');
 
 var Interest = new Schema({
-	interestId: Number,
+	interestId: {
+		type: String,
+		index: {
+			unique: true
+	}},
 	title : String,
 	state : state,
 	coords : {
