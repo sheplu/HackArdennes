@@ -7,7 +7,7 @@ var state = require('./../enums/state');
 
 var Interest = new Schema({
 	interestId: {
-		type: String,
+		type: Number,
 		index: {
 			unique: true
 	}},

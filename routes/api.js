@@ -42,6 +42,7 @@ router.post('/interest', function(req, res, next) {
 });
 
 router.put('/interest', function(req, res, next) {
+  console.log(req.body)
 	Interest.findOneAndUpdate({
 		interestId: req.body.interestId
 	}, {
@@ -50,6 +51,7 @@ router.put('/interest', function(req, res, next) {
 		new : true,
     runValidators : true
 	}, function (err, data) {
+		console.log(data)
 		if(err) {
 			res.json(err);
 		} else {
