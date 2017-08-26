@@ -1,6 +1,7 @@
 {% extends "template.twig" %}
 
 {% block content %}
+  Message of the moments: <b> {{ message }} </b>
   <div>
   <svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" version="1.1" x="0px" y="0px" viewBox="0 0 960 560" style="enable-background:new 0 0 960 560;" xml:space="preserve" id="svg682" sodipodi:docname="map2.svg" inkscape:version="0.92.2 5c3e80d, 2017-08-06">
       <metadata id="metadata688">
@@ -19,7 +20,7 @@
 {% for data in datas %}
 {{data}}
     {% if (data.state == "GREEN") %}
-    <g id="pin1" transform="translate({{data.coords.x }},{{data.coords.y }})">
+    <g id="pin1" transform="translate({{(data.x/960*(470+16))-4}},{{(data.y/560*(175+94))+2 }}) scale(.5)">
         <g id="Page-1_3_">
             <g transform="translate(-253,-434)" id="Custom-Preset-2_3_">
                 <g transform="translate(253,434)" id="_x32__3_">
@@ -52,7 +53,7 @@
 {% endif %}
 
 {% if (data.state == "ORANGE") %}
-<g id="pin2" transform="translate(({{-16 + data.coords.x }},{{-72 + data.coords.y }})">
+<g id="pin2" transform="translate(({{-16 + data.x }},{{-72 + data.y }})">
     <g id="Page-1_4_">
         <g transform="translate(-391,-434)" id="Custom-Preset-2_4_">
             <g transform="translate(253,434)" id="_x32__4_">
@@ -84,7 +85,7 @@
 {% endif %}
 
 {% if (data.state == "RED") %}
-<g id="pin3" transform="translate(({{-16 + data.coords.x }},{{-49 + data.coords.y }})">
+<g id="pin3" transform="translate(({{-16 + data.x }},{{-49 + data.y }})">
     <g id="g679">
         <g id="g649">
             <g id="g621">
