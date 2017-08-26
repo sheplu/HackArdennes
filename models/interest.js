@@ -14,7 +14,8 @@ var Interest = new Schema({
 		y : Number
 	},
 	type : type,
-	pushstate: []
+	pushstate: [],
+	desc : String
 });
 
 module.exports = mongoose.model('Interest', Interest);
