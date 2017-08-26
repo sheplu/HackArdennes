@@ -19,7 +19,7 @@
 
 {% for data in datas %}
     {% if (data.state == "GREEN") %}
-    <g id="pin1" transform="translate({{(data.x/960*(470+16))-4}},{{(data.y/560*(175+94))+2 }}) scale(.5)">
+    <g id="pin1" transform="translate({{(data.x/960*(470+16))-8}},{{(data.y/560*(175+94))+9 }}) scale(.5)">
         <g id="Page-1_3_">
             <g transform="translate(-253,-434)" id="Custom-Preset-2_3_">
                 <g transform="translate(253,434)" id="_x32__3_">
@@ -84,7 +84,7 @@
 {% endif %}
 
 {% if (data.state == "RED") %}
-<g id="pin3" transform="translate(({{-16 + data.x }},{{-49 + data.y }})">
+<g id="pin3" transform="translate({{(data.x/960*(470+16))-8}},{{(data.y/560*(175+94))+32 }}) scale(.5)">
     <g id="g679">
         <g id="g649">
             <g id="g621">
