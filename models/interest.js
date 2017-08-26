@@ -17,6 +17,8 @@ var Interest = new Schema({
 		x : Number,
 		y : Number
 	},
+	x: Number,
+	y: Number,
 	type : type,
 	pushstate: [],
 	desc : String

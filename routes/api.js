@@ -28,8 +28,10 @@ router.post('/interest', function(req, res, next) {
 		desc : req.body.desc,
 		coords : {
 			x : req.body.x,
-			y : req.body.y
+			y : req.body.y,
 		},
+    x : req.body.x,
+    y : req.body.y,
 		type : req.body.type
 	});
 	interest.save(function(err, data) {
