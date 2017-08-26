@@ -18,7 +18,6 @@
 {% include 'partialSVG.xml' %}
 
 {% for data in datas %}
-{{data}}
     {% if (data.state == "GREEN") %}
     <g id="pin1" transform="translate({{(data.x/960*(470+16))-4}},{{(data.y/560*(175+94))+2 }}) scale(.5)">
         <g id="Page-1_3_">
@@ -198,16 +197,6 @@
            stroke-width: 3;
            fill:#00cc00" onmousedown="interestClicked('{{data.title}}')" /></g>
    </svg>
-
-
-<script>
- function interestClicked(title)
- {
-  alert(title);
- }
-
-</script>
-
  </div>
 
 
